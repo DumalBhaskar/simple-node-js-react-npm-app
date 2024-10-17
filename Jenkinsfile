@@ -38,6 +38,11 @@ pipeline {
             
             mail bcc: '', body: "${JOB_NAME}, build success", cc: '', from: '', replyTo: '', subject: "Pipeline ${JOB_NAME} status", to: 'dumalbhaskar@gmail.com'
         }
+
+        failure {
+            
+            mail bcc: '', body: "${JOB_NAME}, build failure", cc: '', from: '', replyTo: '', subject: "Pipeline ${JOB_NAME} status", to: 'dumalbhaskar@gmail.com'
+        }
         
     }
 }
