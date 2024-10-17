@@ -8,11 +8,18 @@ pipeline {
 
     stages {
         
-        // stage('git checkout') {
-        //     steps {
-        //         git changelog: false, poll: false, url: 'https://github.com/DumalBhaskar/simple-node-js-react-npm-app.git'
-        //     }
-        // }
+        stage('clean ws') {
+            steps {
+                
+                 cleanWs()
+            }
+        }
+        
+        stage('git checkout') {
+            steps {
+                git changelog: false, poll: false, url: 'https://github.com/DumalBhaskar/simple-node-js-react-npm-app.git'
+            }
+        }
         
         stage('image build') {
             steps {
@@ -42,6 +49,11 @@ pipeline {
         failure {
             
             mail bcc: '', body: "${JOB_NAME}, build failure", cc: '', from: '', replyTo: '', subject: "Pipeline ${JOB_NAME} status", to: 'dumalbhaskar@gmail.com'
+        }
+        
+        always {
+            
+            cleanWs() 
         }
         
     }
