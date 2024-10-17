@@ -8,18 +8,18 @@ pipeline {
 
     stages {
         
-        stage('clean ws') {
-            steps {
+        // stage('clean ws') {
+        //     steps {
                 
-                 cleanWs()
-            }
-        }
+        //          cleanWs()
+        //     }
+        // }
         
-        stage('git checkout') {
-            steps {
-                git changelog: false, poll: false, url: 'https://github.com/DumalBhaskar/simple-node-js-react-npm-app.git'
-            }
-        }
+        // stage('git checkout') {
+        //     steps {
+        //         git changelog: false, poll: false, url: 'https://github.com/DumalBhaskar/simple-node-js-react-npm-app.git'
+        //     }
+        // }
         
         stage('image build') {
             steps {
